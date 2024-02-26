@@ -1,6 +1,15 @@
+<button (click)="getPlayerData(players[2])">get data</button>
+<div *ngFor="let s of skyblockPlayers">
+    <div id="player">
+        name: {{s.name}}
+        experience: {{s.experience / 100}}
+    </div>
+
+</div>
+
 <div *ngFor="let p of players">
     <div id="player">
-        <p>UUID: {{p.uuid}}</p>
-        <p> Rank: {{p.rank}}</p>
+        UUID: {{p.uuid}}
+        Rank: {{p.rank}}
     </div>
 </div>
