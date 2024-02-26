@@ -1,0 +1,8 @@
+#player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid red 1px;
+    position: left;
+    width: max-content;
+}

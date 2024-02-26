@@ -1,1 +1,6 @@
-<p>player works!</p>
+<div *ngFor="let p of players">
+    <div id="player">
+        <p>UUID: {{p.uuid}}</p>
+        <p> Rank: {{p.rank}}</p>
+    </div>
+</div>
