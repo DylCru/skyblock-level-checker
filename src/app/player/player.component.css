@@ -1,8 +1,30 @@
+* {
+    font-family: 'Helvetica';
+}
+
 #player {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border: solid red 1px;
     position: left;
-    width: max-content;
+    width: 250px;
+}
+
+#playerData {
+    display: flex;
+    flex-direction: column;
+}
+
+#playerName {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.center {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+    margin: auto;
+    margin-top: 10px;
 }
