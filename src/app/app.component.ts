@@ -10,5 +10,5 @@ import { PlayerComponent } from './player/player.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'skyblock-level-checker';
+  title = 'Skyblock Level Checker';
 }
