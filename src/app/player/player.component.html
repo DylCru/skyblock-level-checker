@@ -8,7 +8,9 @@
                 <button *ngIf="!(skyblockPlayers.length === guildSize)" (click)="getPlayerData()"  class="btn btn-primary">Get Guild Data</button>
             </li>
             <li class="nav-item ms-2">
-                <button *ngIf="skyblockPlayers.length === guildSize" (click)="checkRequirement(skyblockPlayers, (levelReq.valueAsNumber * 100))"  class="btn btn-primary">Check Requirements</button>
+                @if (skyblockPlayers.length > 0 && guildSize !== 0) {
+                    <button (click)="checkRequirement(skyblockPlayers, (levelReq.valueAsNumber * 100))"  class="btn btn-primary">Check Requirements</button>
+                }
             </li>
             <li class="nav-item {{skyblockPlayers.length === guildSize ? 'success': 'loading'}}">
                 @if (skyblockPlayers.length > 0 && guildSize !== 0) {
