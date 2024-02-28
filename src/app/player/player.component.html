@@ -1,14 +1,27 @@
-<div class="center">
-    <input type="number" placeholder="Level Requirement" #levelReq>
-    <button *ngIf="!(skyblockPlayers.length === guildSize)" (click)="getPlayerData()"  class="btn btn-primary">Get Guild Data</button>
-    <button *ngIf="skyblockPlayers.length === guildSize" (click)="checkRequirement(skyblockPlayers, (levelReq.valueAsNumber * 100))"  class="btn btn-primary">Check Requirements</button>
+<div class="navbar navbar-expand-md bg-dark sticky-top">
+    <div class="container-fluid">
+        <ul class="navbar-nav me-auto, mb-2, mb-lg-0, me-2">
+            <li class="nav-item">
+                <input class="form-control" type="number" placeholder="Level Requirement" #levelReq>
+            </li>
+            <li class="nav-item ms-2">
+                <button *ngIf="!(skyblockPlayers.length === guildSize)" (click)="getPlayerData()"  class="btn btn-primary">Get Guild Data</button>
+            </li>
+            <li class="nav-item ms-2">
+                <button *ngIf="skyblockPlayers.length === guildSize" (click)="checkRequirement(skyblockPlayers, (levelReq.valueAsNumber * 100))"  class="btn btn-primary">Check Requirements</button>
+            </li>
+            <li class="nav-item {{skyblockPlayers.length === guildSize ? 'success': 'loading'}}">
+                @if (skyblockPlayers.length > 0 && guildSize !== 0) {
+                    <div class="position-absolute top-50 end-0 translate-middle-y text-center me-2">Loaded {{skyblockPlayers.length}} players</div>
+                }
+            </li>
+        </ul>
+    </div>
 </div>
-<div *ngIf="skyblockPlayers.length > 0" class="center">Loaded {{skyblockPlayers.length}} players!</div>
-
 
 <div class="container-fluid">
     <div *ngFor="let s of belowReq; index as i" style="float: left; margin: 10px;">
-        <div class="card text-white bg-danger" style="width: 13rem; min-width: 13rem; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
+        <div class="card text-white bg-danger" style="width: 14rem; min-width: 14rem; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
             <img class="card-img-top" src="https://mc-heads.net/avatar/{{s.uuid}}.png" alt="{{s.name}}'s head">
             <div class="card-body">
               <h5 class="card-title">{{s.name}}</h5>
