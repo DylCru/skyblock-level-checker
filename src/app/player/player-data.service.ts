@@ -14,7 +14,7 @@ export class PlayerDataService {
       'https://api.hypixel.net/v2/guild',
      {params: {name: 'DaySleepers'},
       headers: {
-        'API-Key': 'bf44c24d-a7c5-4307-bb94-287cb7441f16'
+        'API-Key': 'bc4e4843-b226-41f8-a0f2-e70534e643be'
       }
     })
   }
@@ -24,7 +24,7 @@ export class PlayerDataService {
       'https://api.hypixel.net/v2/skyblock/profiles',
      {params: {uuid: uuid},
       headers: {
-        'API-Key': 'bf44c24d-a7c5-4307-bb94-287cb7441f16'
+        'API-Key': 'bc4e4843-b226-41f8-a0f2-e70534e643be'
       }
     })
   }
