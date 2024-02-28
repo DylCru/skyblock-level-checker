@@ -28,3 +28,12 @@
     margin: auto;
     margin-top: 10px;
 }
+
+.success {
+    font-weight: bold;
+    color: green;
+}
+
+.loading {
+    color: white;
+}
