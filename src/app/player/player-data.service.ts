@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class PlayerDataService {
       'https://api.hypixel.net/v2/guild',
      {params: {name: 'DaySleepers'},
       headers: {
-        'API-Key': 'bc4e4843-b226-41f8-a0f2-e70534e643be'
+        'API-Key': environment.apikey
       }
     })
   }
@@ -24,7 +25,7 @@ export class PlayerDataService {
       'https://api.hypixel.net/v2/skyblock/profiles',
      {params: {uuid: uuid},
       headers: {
-        'API-Key': 'bc4e4843-b226-41f8-a0f2-e70534e643be'
+        'API-Key': environment.apikey
       }
     })
   }
