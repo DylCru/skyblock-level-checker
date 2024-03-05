@@ -5,6 +5,14 @@
                 <input class="form-control" type="number" placeholder="Level Requirement" #levelReq>
             </li>
             <li class="nav-item ms-2">
+                <input class="form-control" type="text" placeholder="Kick Reason" #kickReason>
+            </li>
+            @if (belowReq.length > 0) {
+                <li class="nav-item ms-2">
+                    <p class="text-center" style="color: white; text-align: center;">Players below requirements: {{belowReq.length}}</p>
+                </li>
+            }
+            <li class="nav-item ms-2">
                 <button *ngIf="!(skyblockPlayers.length === guildSize)" (click)="getPlayerData()"  class="btn btn-primary">Get Guild Data</button>
             </li>
             <li class="nav-item ms-2">
@@ -29,24 +37,25 @@
               <h5 class="card-title">{{s.name}}</h5>
               <p class="card-subtitle mb-2">Guild Rank: {{s.guildRank}}</p>
               <p class="card-text fs-5">Highest Level: {{s.highestLevel / 100}}</p>
-              <a class="btn btn-primary" (click)="copyKickCommand(s.name)" ngbTooltip="/g kick {{s.name}}">Copy Kick Command</a>
+              <a class="btn btn-primary" (click)="copyKickCommand(s.name, kickReason.value)" ngbTooltip="/g kick {{s.name}}">Copy Kick Command</a>
             </div>
         </div>
         <br>
     </div>    
 </div>
 
-<!-- <div class="container-fluid">
-    <div *ngFor="let s of testPlayer; index as i" style="float: left; margin: 10px;">
+<div class="container-fluid">
+    <div *ngFor="let s of belowReq; index as i" style="float: left; margin: 10px;">
         <div class="card text-white bg-danger" 
         style="width: 13rem;">
             <img class="card-img-top" src="https://mc-heads.net/avatar/{{s.uuid}}.png" alt="{{s.name}}'s head">
             <div class="card-body">
               <h5 class="card-title">{{s.name}}</h5>
-              <p class="card-subtitle mb-2">Guild Rank: {{s.guildRank}}</p>
+              <p class="card-subtitle">Guild Rank: {{s.guildRank}}</p>
+              <a class="card-subtitle text-decoration-none mb-2" style="font-size: small;" target="_blank" href="https://sky.shiiyu.moe/stats/{{s.name}}">View Skycrypt ⎘</a>
               <p class="card-text fs-5">Highest Level: {{s.highestLevel / 100}}</p>
-              <a class="btn btn-primary" (click)="copyKickCommand(s.name)" ngbTooltip="/g kick {{s.name}}">Copy Kick Command</a>
+              <a class="btn btn-primary" (click)="copyKickCommand(s.name, kickReason.value)" ngbTooltip="/g kick {{s.name}}">Copy Kick Command</a>
             </div>
         </div>
     </div>
-</div> -->
+</div>
