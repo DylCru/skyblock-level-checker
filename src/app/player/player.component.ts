@@ -34,7 +34,7 @@ export class PlayerComponent {
     this.loaded = false
     this.staffRole = 'Staff'
 
-    this.belowReq = TestData  
+    //this.belowReq = TestData  
   }
 
    ngOnInit() {
