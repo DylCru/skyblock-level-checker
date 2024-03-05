@@ -1,4 +1,25 @@
-<app-player></app-player>
+    <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" [(ngModel)]="checkRequirements">
+    <label class="form-check-label text-white" for="flexSwitchCheckDefault">Toggle Mode</label>
+</div>
+<!-- @if (checkRequirements) {
+    <app-player></app-player>
+} @else {
+    <app-promotion-checker></app-promotion-checker>
+} -->
+
+<button (click)="getPlayerData()"  class="btn btn-primary">Load Player Data</button>
+@if (skyblockPlayers.length > 0 && guildSize !== 0) {
+    <div class="position-absolute top-50 end-0 translate-middle-y text-center me-2">Loaded {{skyblockPlayers.length}} players</div>
+}
+
+<button (click)="loadTime()"  class="btn btn-primary">Local Storage Test</button>
+<p>button last clicked at {{getTimeStamp()}}</p> 
+
+<button (click)="getPlayerProfileFromStorage()"  class="btn btn-primary">print profiles to console</button>
+
+<button (click)="logLocalStorage()"  class="btn btn-primary">log local storage</button>
+
 
 <footer class="navbar bg-dark d-flex align-items-center w-100 overflow-hidden">
     <ul class="nav m-auto">
