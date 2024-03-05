@@ -1,4 +1,4 @@
-import { playerProfiles } from "./playerProfiles";
+import { playerProfiles } from "../playerProfiles";
 
 export const TestData: playerProfiles[] = [
     {
