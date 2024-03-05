@@ -1,11 +1,11 @@
 <div class="navbar navbar-expand-md bg-dark sticky-top">
     <div class="container-fluid">
         <ul class="navbar-nav me-auto, mb-2, mb-lg-0, me-2">
-            <li class="nav-item">
-                <input class="form-control" type="number" placeholder="Level Requirement" #levelReq>
+            <li class="nav-item ms-2 ">
+                <input class="form-control" type="number" placeholder="Level Requirement" [(ngModel)]="levelReq">
             </li>
             <li class="nav-item ms-2">
-                <input class="form-control" type="text" placeholder="Kick Reason" #kickReason>
+                <input class="form-control" type="text" placeholder="Kick Reason" [(ngModel)]="kickReason">
             </li>
             @if (belowReq.length > 0) {
                 <li class="nav-item ms-2">
@@ -13,35 +13,12 @@
                 </li>
             }
             <li class="nav-item ms-2">
-                <button *ngIf="!(skyblockPlayers.length === guildSize)" (click)="getPlayerData()"  class="btn btn-primary">Get Guild Data</button>
-            </li>
-            <li class="nav-item ms-2">
                 @if (skyblockPlayers.length > 0 && guildSize !== 0 && skyblockPlayers.length === guildSize) {
-                    <button (click)="checkRequirement(skyblockPlayers, (levelReq.valueAsNumber * 100))"  class="btn btn-primary">Check Requirements</button>
-                }
-            </li>
-            <li class="nav-item {{skyblockPlayers.length === guildSize ? 'success': 'loading'}}">
-                @if (skyblockPlayers.length > 0 && guildSize !== 0) {
-                    <div class="position-absolute top-50 end-0 translate-middle-y text-center me-2">Loaded {{skyblockPlayers.length}} players</div>
+                    <button (click)="checkRequirement(skyblockPlayers, (levelReq * 100))"  class="btn btn-primary">Check Requirements</button>
                 }
             </li>
         </ul>
     </div>
-</div>
-
-<div class="container-fluid">
-    <div *ngFor="let s of belowReq; index as i" style="float: left; margin: 10px;">
-        <div class="card text-white bg-danger" style="width: 14rem; min-width: 14rem; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
-            <img class="card-img-top" src="https://mc-heads.net/avatar/{{s.uuid}}.png" alt="{{s.name}}'s head">
-            <div class="card-body">
-              <h5 class="card-title">{{s.name}}</h5>
-              <p class="card-subtitle mb-2">Guild Rank: {{s.guildRank}}</p>
-              <p class="card-text fs-5">Highest Level: {{s.highestLevel / 100}}</p>
-              <a class="btn btn-primary" (click)="copyKickCommand(s.name, kickReason.value)" ngbTooltip="/g kick {{s.name}}">Copy Kick Command</a>
-            </div>
-        </div>
-        <br>
-    </div>    
 </div>
 
 <div class="container-fluid">
@@ -54,7 +31,7 @@
               <p class="card-subtitle">Guild Rank: {{s.guildRank}}</p>
               <a class="card-subtitle text-decoration-none mb-2" style="font-size: small;" target="_blank" href="https://sky.shiiyu.moe/stats/{{s.name}}">View Skycrypt ⎘</a>
               <p class="card-text fs-5">Highest Level: {{s.highestLevel / 100}}</p>
-              <a class="btn btn-primary" (click)="copyKickCommand(s.name, kickReason.value)" ngbTooltip="/g kick {{s.name}}">Copy Kick Command</a>
+              <a class="btn btn-primary" (click)="copyKickCommand(s.name)" ngbTooltip="/g kick {{s.name}}">Copy Kick Command</a>
             </div>
         </div>
     </div>
