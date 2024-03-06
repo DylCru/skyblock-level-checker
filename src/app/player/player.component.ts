@@ -33,13 +33,22 @@ export class PlayerComponent {
     this.loaded = false
     this.staffRole = 'Staff'
 
-    this.belowReq = TestData  
+    //this.belowReq = TestData  
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('init')
+    this.loadDataFromStorage()
+  }
 
   loadDataFromStorage() {
-    
+      for (let i = 0; i < localStorage.length; i++) {
+        const uuid = localStorage.key(i)
+        if (uuid && uuid !== 'timestamp' && uuid !== 'cooldown') {
+          const playerData = JSON.parse(localStorage.getItem(uuid)!) as playerProfiles
+          this.skyblockPlayers.push(playerData)
+        }
+      }
   }
 
   checkRequirement(profiles: playerProfiles[], levelReq: number) {
