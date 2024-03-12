@@ -91,6 +91,8 @@ export class PromotionCheckerComponent {
   }
 
   reset() {
+    this.displayPlayers = []
+    this.promotionPlayers = []
     this.maxLevel = 430
     this.minLevel = 0
     this.choice = ''
