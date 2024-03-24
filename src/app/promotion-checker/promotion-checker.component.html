@@ -1,0 +1,66 @@
+<div class="navbar navbar-expand-md bg-dark sticky-top">
+    <div class="container-fluid">
+        <ul class="navbar-nav me-auto, mb-2, mb-lg-0, me-2">
+            <li class="nav-item ms-2 ">
+                <input class="form-control" type="number" placeholder="Min Level" [disabled]="choice !== ''" [(ngModel)]="minLevel">
+            </li>
+            <li class="nav-item ms-2">
+                <input class="form-control" type="number" placeholder="Max Level" [disabled]="choice !== ''" [(ngModel)]="maxLevel">
+            </li>
+            <li class="nav-item ms-2">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-info" id="dropdownBasic1" ngbDropdownToggle>
+                        {{choice === '' ? 'Select Guild Rank' : choice}}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem (click)="setMinMax(220, 259); setSelectedRank('Sleeper')">Sleeper</button>
+                        <button ngbDropdownItem (click)="setMinMax(260, 289); setSelectedRank('Dreamer')">Dreamer</button>
+                        <button ngbDropdownItem (click)="setMinMax(290, 319); setSelectedRank('Insomniac')">Insomniac</button>
+                        <button ngbDropdownItem (click)="setMinMax(320, 430); setSelectedRank('Hypnos')">Hypnos</button>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item ms-2">
+                <button (click)="reset()"  class="btn btn-danger">Reset</button>
+            </li>
+            <li class="nav-item ms-2">
+                @if (skyblockPlayers.length > 0) {
+                    <button (click)="checkPlayers()"  class="btn btn-primary">Check Requirements</button>
+                }
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div *ngFor="let s of promotionPlayers; index as i" style="float: left; margin-right: 10px; margin-top: 10px;">
+            <div class="card text-white bg-warning" 
+            style="min-width: 14rem; max-width: 14rem;">
+                <img class="card-img-top" src="https://mc-heads.net/avatar/{{s.uuid}}.png" alt="{{s.name}}'s head">
+                <div class="card-body">
+                  <h5 class="card-title">{{s.name}}</h5>
+                  <p class="card-subtitle text-decoration-none mb-2" style="font-size: small;">Eligible for promotion!</p>
+                  <p class="card-subtitle">Guild Rank: {{s.guildRank}}</p>
+                  <a class="card-subtitle text-decoration-none mb-2" style="font-size: small;" target="_blank" href="https://sky.shiiyu.moe/stats/{{s.name}}">View Skycrypt ⎘</a>
+                  <p class="card-text fs-4">Highest Level: {{s.highestLevel / 100}}</p>
+                  <a class="btn btn-primary" (click)="copyPromoteCommand(s.name)" ngbTooltip="/g promote {{s.name}}">Copy Promote Command</a>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div *ngFor="let s of displayPlayers; index as i" style="float: left; margin-right: 10px; margin-top: 10px;">
+        <div class="card text-white bg-danger" 
+        style="min-width: 14rem; max-width: 14rem;">
+            <img class="card-img-top" src="https://mc-heads.net/avatar/{{s.uuid}}.png" alt="{{s.name}}'s head">
+            <div class="card-body">
+              <h5 class="card-title">{{s.name}}</h5>
+              <p class="card-subtitle">Guild Rank: {{s.guildRank}}</p>
+              <a class="card-subtitle text-decoration-none mb-2" style="font-size: small;" target="_blank" href="https://sky.shiiyu.moe/stats/{{s.name}}">View Skycrypt ⎘</a>
+              <p class="card-text fs-4">Highest Level: {{s.highestLevel / 100}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
