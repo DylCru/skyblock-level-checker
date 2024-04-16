@@ -1,0 +1,39 @@
+<!-- <button (click)="getPlayerData()"  class="btn btn-primary">Load Player Data</button>
+@if (skyblockPlayers.length > 0 && guildSize !== 0) {
+    <div class="position-absolute top-50 end-0 translate-middle-y text-center me-2">Loaded {{skyblockPlayers.length}} players</div>
+}
+
+<button (click)="getPlayerProfileFromStorage()" class="btn btn-primary">print profiles to console</button>
+
+<button (click)="logLocalStorage()" class="btn btn-primary">log local storage</button> -->
+<!-- <button (click)="logLocalStorage()" class="btn btn-primary">log local storage</button>
+<button (click)="checkCooldown()" class="btn btn-primary">checkCooldown</button>
+<button (click)="clearLocalStorage()" class="btn btn-primary">clear local storage</button> -->
+
+<html>
+    <div style="color: white;" class="bg-dark d-flex flex-column align-items-center mt-5 p-5">
+        <h1 class="text-center" style="font-size: 100px;">DaySleepers Checker Tool</h1>
+        <div class="d-flex flex-column align-items-center">
+            <button class="btn btn-primary btn-lg" (click)="getPlayerData()">
+                Load Guild Data
+            </button>
+            <p>Last updated: {{getTimeClicked()}}</p>
+            @if (skyblockPlayers.length > 0 && guildSize !== 0) {
+                <div>Loaded {{skyblockPlayers.length}} players</div>
+            }
+            @if (clickedOnCooldown) {
+                <ngb-alert type="danger" (closed)="clickedOnCooldown = false">
+                    You can reload guild data again at {{getCooldown()}}
+                </ngb-alert>
+            }
+        </div>
+        <div class="">
+            <a class="btn btn-primary btn-lg" routerLink="/requirements" role="button">
+                Requirement Checker
+            </a>
+            <a class="btn btn-primary btn-lg ms-2" routerLink="/promotion" role="button">
+                Promotion Checker
+            </a>
+        </div>
+    </div>
+</html>

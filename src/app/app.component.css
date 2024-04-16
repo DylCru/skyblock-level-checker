@@ -1,0 +1,16 @@
+html {
+    background-color: aqua;
+}
+
+.requirements, .promotion {
+    bottom: 0;
+    color: #707070;
+    left: 0;
+    position: static;
+}
+
+.home {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+}
